@@ -11,11 +11,13 @@ registry.add('todos', todosView)
 registry.add('counter', counterView)
 registry.add('filters', filtersView)
 
+// 애플리케이션 상태
 const state = {
   todos: [],
   currentFilter: 'All'
 }
 
+// 애플리케이션 이벤트 핸들러 정의
 const events = {
   deleteItem: (index) => {
     state.todos.splice(index, 1)
@@ -31,7 +33,8 @@ const events = {
 }
 
 const render = () => {
-  window.requestAnimationFrame(() => {
+    // requestAnimationFrame: 브라우저의 렌더링 사이클에 맞춰 UI 갱신
+    window.requestAnimationFrame(() => {
     const main = document.querySelector('#root')
 
     const newMain = registry.renderRoot(
