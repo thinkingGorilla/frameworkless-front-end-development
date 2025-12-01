@@ -73,8 +73,10 @@ export default class List extends HTMLElement {
     this.list.innerHTML = ''
 
     this.todos
-      .map(this.getTodoElement)
-      .forEach(element => {
+        // 자바스크립트에서 this 는 "메서드를 호출한 방식"에 따라 결정된다.
+        // 화살표 함수의 this 는 화살표 함수가 호출된 상위 스코프의 객체를 가리킨다.
+        .map((todo, index) => this.getTodoElement(todo, index))
+        .forEach(element => {
         this.list.appendChild(element)
       })
   }
