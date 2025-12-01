@@ -51,6 +51,9 @@ export default () => {
   router.addRoute = (fragment, component) => {
     const params = []
 
+    // `:parameterName` 형태의 URL 파라미터를 정규식 캡처 그룹으로 치환한다.
+    // 치환되는 정규식 `([^\/]+)` 은 슬래시가 아닌 임의의 문자열을 1개 이상 매칭한다.
+    // 파라미터 이름(`parameterName`)은 추출 순서대로 params 배열에 기록하여 매칭 시 캡처된 값과 매핑될 수 있도록 한다.
     const parsedFragment = fragment
       .replace(
         ROUTE_PARAMETER_REGEXP,
